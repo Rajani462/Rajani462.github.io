@@ -1,0 +1,25 @@
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  color: #333;
+  background-color: #f7f9fc;
+}
+h1, h2 { color: #005f99; }
+a { color: #007acc; text-decoration: none; }
+#sidebar {
+  background: #003d66;
+  color: white;
+  position: fixed;
+  top: 0; left: 0;
+  width: 220px; height: 100%;
+  padding: 2em 1em;
+}
+#sidebar a { color: #fff; }
+#wrapper {
+  margin-left: 240px;
+  padding: 2em;
+}
+section {
+  margin-bottom: 3em;
+}
