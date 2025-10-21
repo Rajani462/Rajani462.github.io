@@ -28,7 +28,7 @@ a{color:var(--link); text-decoration:none;}
 .hero .intro{flex:1;}
 .hero h1{margin:0; font-size:34px; color:var(--accent);}
 .hero p{margin:6px 0; color:var(--muted);}
-.profile{width:140px; height:140px; border-radius:50%; object-fit:cover; border:4px solid #fff; box-shadow:0 3px 12px rgba(0,0,0,0.08)}
+.profile{width:240px; height:240px; border-radius:50%; object-fit:cover; border:4px solid #fff; box-shadow:0 3px 12px rgba(0,0,0,0.08)}
 
 /* Content */
 .container{max-width:var(--max-width); margin:20px auto; padding:0 20px;}
