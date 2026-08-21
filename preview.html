@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rajani Kumar Pradhan — Hydroclimate & Precipitation Research</title>
+<meta name="description" content="Dr. Rajani Kumar Pradhan — Marie Skłodowska-Curie Postdoctoral Fellow, Department of Geosciences, University of Padova. Research on hydroclimatic extremes, precipitation scaling and remote sensing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:        #0B1F2A;
+    --panel:      #12303F;
+    --panel-2:    #0E2733;
+    --paper:      #EAF3F1;
+    --muted:      #8FAAB5;
+    --rain:       #5FB3D9;
+    --rain-dim:   #2E6F82;
+    --amber:      #E8A33D;
+    --line:       rgba(234,243,241,0.12);
+    --line-soft:  rgba(234,243,241,0.06);
+    --radius:     14px;
+    --maxw:       1080px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Spectral', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--paper);
+  }
+
+  a{color:var(--rain); text-decoration:none;}
+  a:hover{color:var(--amber);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--amber); outline-offset:3px; border-radius:4px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  .eyebrow{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rain);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--rain);
+    display:inline-block;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,31,42,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:20px;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.02em;
+    color:var(--paper);
+    white-space:nowrap;
+  }
+  .brand span{color:var(--rain);}
+  nav.links{display:flex; gap:26px; flex-wrap:wrap;}
+  nav.links a{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:13.5px;
+    letter-spacing:0.03em;
+    color:var(--muted);
+  }
+  nav.links a:hover{color:var(--paper);}
+  .socials{display:flex; gap:8px;}
+  .badge-icon{
+    width:30px; height:30px; border-radius:50%;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:10.5px; font-weight:600;
+    color:var(--muted);
+    transition:border-color .18s, color .18s;
+  }
+  .badge-icon:hover{border-color:var(--rain); color:var(--rain);}
+  .menu-toggle{display:none;}
+
+  @media (max-width: 780px){
+    nav.links{
+      position:fixed; inset:64px 0 auto 0; z-index:49;
+      flex-direction:column; gap:0;
+      background:var(--panel-2);
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden;
+      transition:max-height .25s ease;
+    }
+    nav.links a{padding:14px 28px; border-top:1px solid var(--line-soft);}
+    #nav-check:checked ~ nav.links{max-height:420px;}
+    .menu-toggle{
+      display:flex; align-items:center; justify-content:center;
+      width:34px; height:34px;
+      border:1px solid var(--line); border-radius:8px;
+      cursor:pointer; color:var(--paper);
+      font-family:'Space Grotesk',sans-serif; font-size:16px;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 76px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 60px);
+    line-height:1.05;
+    margin:16px 0 10px;
+  }
+  .hero .role{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:16.5px;
+    color:var(--paper);
+    margin-bottom:4px;
+  }
+  .hero .affil{
+    color:var(--muted);
+    font-size:15px;
+    margin-bottom:26px;
+  }
+  .interest-chips{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:34px;}
+  .chip{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12.5px;
+    color:var(--paper);
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:7px 13px;
+    border-radius:100px;
+  }
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:13.5px; font-weight:600;
+    padding:12px 22px;
+    border-radius:9px;
+    display:inline-block;
+  }
+  .btn.primary{background:var(--rain); color:var(--ink);}
+  .btn.primary:hover{background:var(--amber); color:var(--ink);}
+  .btn.ghost{border:1px solid var(--line); color:var(--paper);}
+  .btn.ghost:hover{border-color:var(--rain); color:var(--rain);}
+
+  .hero-figure{
+    display:flex; flex-direction:column; align-items:center; gap:22px;
+  }
+  .portrait{
+    width:220px; height:220px; border-radius:50%;
+    object-fit:cover;
+    border:1px solid var(--line);
+    box-shadow:0 0 0 10px var(--panel-2), 0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+
+  /* Signature element: hyetograph of publication output per year */
+  .hyeto{
+    width:100%; max-width:280px;
+  }
+  .hyeto-label{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:10px; text-align:center;
+  }
+  .hyeto-bars{
+    display:flex; align-items:flex-end; justify-content:center;
+    gap:7px; height:70px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:0;
+  }
+  .hyeto-bars .bar{
+    width:20px;
+    background:linear-gradient(180deg, var(--rain), var(--rain-dim));
+    border-radius:3px 3px 0 0;
+    height:var(--h);
+    transform:scaleY(0);
+    transform-origin:bottom;
+    animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards;
+    animation-delay:var(--d);
+    position:relative;
+  }
+  @keyframes rise{ to{ transform:scaleY(1); } }
+  .hyeto-years{
+    display:flex; justify-content:center; gap:7px; margin-top:8px;
+  }
+  .hyeto-years span{
+    width:20px; text-align:center;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:9.5px; color:var(--muted);
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section.block{padding:76px 0; border-bottom:1px solid var(--line);}
+  .block-head{margin-bottom:38px;}
+  .block-head h2{font-size:clamp(26px,3vw,32px); margin-top:10px;}
+
+  .lead{max-width:680px; color:var(--paper); font-size:16px;}
+  .lead + ul{margin-top:24px;}
+
+  ul.theme-list{list-style:none; margin:0; padding:0; display:grid; gap:12px; max-width:600px;}
+  ul.theme-list li{
+    display:flex; align-items:flex-start; gap:12px;
+    color:var(--paper); font-size:15px;
+  }
+  ul.theme-list li::before{
+    content:"";
+    width:7px; height:7px; margin-top:8px; flex-shrink:0;
+    background:var(--rain); border-radius:50%;
+  }
+
+  .tools-row{display:flex; flex-wrap:wrap; gap:9px; margin-top:26px;}
+
+  /* Timeline (experience) */
+  .timeline{position:relative; max-width:760px; margin-top:8px;}
+  .timeline::before{
+    content:""; position:absolute; left:6px; top:6px; bottom:6px; width:1px;
+    background:var(--line);
+  }
+  .t-item{position:relative; padding-left:34px; margin-bottom:34px;}
+  .t-item:last-child{margin-bottom:0;}
+  .t-item::before{
+    content:""; position:absolute; left:0; top:6px;
+    width:13px; height:13px; border-radius:50%;
+    background:var(--panel); border:2px solid var(--rain);
+  }
+  .t-item .t-date{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12px; letter-spacing:0.05em;
+    color:var(--amber); margin-bottom:6px;
+  }
+  .t-item h3{font-size:19px; margin-bottom:3px;}
+  .t-item .t-org{color:var(--muted); font-size:14.5px;}
+
+  /* Projects */
+  .projects-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:8px;}
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .card h3{font-size:18px; line-height:1.35;}
+  .card p{color:var(--muted); font-size:14px; margin:0; line-height:1.65;}
+  .card .tag{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:11px; color:var(--rain);
+    letter-spacing:0.04em; text-transform:uppercase;
+  }
+  .card a.card-link{
+    margin-top:auto; font-family:'Space Grotesk', sans-serif;
+    font-size:13px; font-weight:600;
+  }
+
+  /* Publications */
+  .pub-group{margin-bottom:34px;}
+  .pub-group:last-child{margin-bottom:0;}
+  .pub-group h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--muted); font-weight:600;
+    margin-bottom:16px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+  ul.pub-list{list-style:none; margin:0; padding:0; display:grid; gap:18px;}
+  ul.pub-list li{
+    font-size:14.5px; color:var(--paper);
+    padding-left:0;
+    display:flex; gap:14px; align-items:baseline;
+    flex-wrap:wrap;
+  }
+  ul.pub-list li .pub-year{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12.5px; color:var(--amber);
+    width:38px; flex-shrink:0;
+  }
+  ul.pub-list li .pub-body{flex:1; min-width:220px;}
+  ul.pub-list li .pub-body .jn{font-style:italic; color:var(--muted);}
+  ul.pub-list li .pub-body strong{color:var(--paper);}
+  .if-badge{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:10.5px; color:var(--rain);
+    border:1px solid var(--rain-dim); border-radius:100px;
+    padding:2px 8px; white-space:nowrap;
+  }
+  .doi-link{font-size:12.5px; margin-left:2px;}
+
+  /* Contact */
+  .contact-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:start;
+  }
+  .contact-list{list-style:none; margin:20px 0 0; padding:0; display:grid; gap:14px;}
+  .contact-list li{font-size:15px; color:var(--paper);}
+  .contact-list li span.k{
+    display:block; font-family:'Space Grotesk', sans-serif;
+    font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:3px;
+  }
+  .socials-full{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
+  .socials-full a{
+    font-family:'Space Grotesk', sans-serif; font-size:13px; font-weight:600;
+    border:1px solid var(--line); padding:9px 16px; border-radius:9px; color:var(--paper);
+  }
+  .socials-full a:hover{border-color:var(--rain); color:var(--rain);}
+
+  footer{
+    padding:34px 0 46px;
+    text-align:center;
+    color:var(--muted); font-size:13px;
+    font-family:'Space Grotesk', sans-serif;
+  }
+
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr; gap:44px;}
+    .hero-figure{order:-1;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">R.K. <span>Pradhan</span></div>
+    <input type="checkbox" id="nav-check" style="display:none;">
+    <label for="nav-check" class="menu-toggle" aria-label="Toggle menu">☰</label>
+    <nav class="links">
+      <a href="#home">Home</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="socials">
+      <a class="badge-icon" href="https://www.researchgate.net/profile/Rajani-Pradhan" title="ResearchGate" target="_blank" rel="noopener">RG</a>
+      <a class="badge-icon" href="https://scholar.google.com/citations?user=NPssbW4AAAAJ" title="Google Scholar" target="_blank" rel="noopener">GS</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Hydroclimate & Precipitation Research</p>
+        <h1>Dr. Rajani Kumar<br>Pradhan</h1>
+        <p class="role">Marie Skłodowska-Curie Postdoctoral Fellow</p>
+        <p class="affil">Department of Geosciences, University of Padova, Italy</p>
+
+        <div class="interest-chips">
+          <span class="chip">Hydroclimatic extremes</span>
+          <span class="chip">Precipitation scaling</span>
+          <span class="chip">Hydrological modeling</span>
+          <span class="chip">Remote sensing</span>
+        </div>
+
+        <div class="hero-cta">
+          <a class="btn primary" href="https://rajani462.github.io/cv.html" target="_blank" rel="noopener">View CV</a>
+          <a class="btn ghost" href="#publications">Publications</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="hero-figure">
+        <img class="portrait" src="https://rajani462.github.io/images/Profile_pic.png" alt="Portrait of Rajani Kumar Pradhan">
+        <div class="hyeto">
+          <p class="hyeto-label">Journal output, by year</p>
+          <div class="hyeto-bars">
+            <div class="bar" style="--h:24%; --d:.05s" title="2018 — 2 articles"></div>
+            <div class="bar" style="--h:14%; --d:.10s" title="2019 — 1 article"></div>
+            <div class="bar" style="--h:14%; --d:.15s" title="2020 — 1 article"></div>
+            <div class="bar" style="--h:14%; --d:.20s" title="2021 — 1 article"></div>
+            <div class="bar" style="--h:14%; --d:.25s" title="2022 — 1 article"></div>
+            <div class="bar" style="--h:24%; --d:.30s" title="2023 — 2 articles"></div>
+            <div class="bar" style="--h:24%; --d:.35s" title="2024 — 2 articles"></div>
+            <div class="bar" style="--h:34%; --d:.40s" title="2025 — 3 articles"></div>
+          </div>
+          <div class="hyeto-years">
+            <span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="block" id="research">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">About the work</p>
+        <h2>Research</h2>
+      </div>
+      <p class="lead">My research centers on understanding precipitation processes, extreme rainfall, and hydroclimatic variability using satellite observations, model–data integration, and statistical analysis.</p>
+      <ul class="theme-list">
+        <li>Precipitation evaluation and scaling</li>
+        <li>Diurnal variability of rainfall</li>
+        <li>Hydrological impacts of extreme events</li>
+      </ul>
+      <div class="tools-row">
+        <span class="chip">Satellite precipitation (IMERG / GPM)</span>
+        <span class="chip">SWOT river discharge</span>
+        <span class="chip">Hydrologic modeling</span>
+        <span class="chip">Extreme value statistics</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">Positions held</p>
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="t-item">
+          <p class="t-date">2025 — Present</p>
+          <h3>Marie Skłodowska-Curie Postdoctoral Fellow (MSCA PF)</h3>
+          <p class="t-org">University of Padova, Padova, Italy</p>
+        </div>
+        <div class="t-item">
+          <p class="t-date">2024 — 2025</p>
+          <h3>Postdoctoral Research Associate</h3>
+          <p class="t-org">University of Massachusetts Amherst, MA, USA</p>
+        </div>
+        <div class="t-item">
+          <p class="t-date">2024</p>
+          <h3>Postdoctoral Research Associate</h3>
+          <p class="t-org">Czech University of Life Sciences Prague, Czech Republic</p>
+        </div>
+        <div class="t-item">
+          <p class="t-date">2017 — 2019</p>
+          <h3>Junior Research Fellow</h3>
+          <p class="t-org">Banaras Hindu University, Varanasi, India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="block" id="education">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">Academic background</p>
+        <h2>Education</h2>
+      </div>
+      <div class="timeline">
+        <div class="t-item">
+          <p class="t-date">2019 — 2024</p>
+          <h3>Ph.D.</h3>
+          <p class="t-org">Czech University of Life Sciences Prague, Czech Republic</p>
+        </div>
+        <div class="t-item">
+          <p class="t-date">2014 — 2016</p>
+          <h3>M.Sc. in Environmental Science</h3>
+          <p class="t-org">Central University of Rajasthan, India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="block" id="projects">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="card">
+          <span class="tag">MSCA · 2025–2027</span>
+          <h3>PTSTORM</h3>
+          <p>Extreme Precipitation Response to Temperature Variations — the role of storm types and global circulation patterns.</p>
+          <a class="card-link" href="https://rajani462.github.io/ptstorm.html" target="_blank" rel="noopener">Project page →</a>
+        </div>
+        <div class="card">
+          <span class="tag">IGA</span>
+          <h3>Diurnal cycle intercomparison</h3>
+          <p>Intercomparison of the diurnal cycle of precipitation estimates over the global ocean, across multiple satellite datasets.</p>
+        </div>
+        <div class="card">
+          <span class="tag">IGA</span>
+          <h3>Tropical oceanic precipitation</h3>
+          <p>A multi-dataset approach to estimating tropical oceanic precipitation and characterizing inter-dataset uncertainty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="block" id="publications">
+    <div class="wrap">
+      <div class="block-head">
+        <p class="eyebrow">13 journal articles · 1 book chapter · 8 conference presentations</p>
+        <h2>Publications</h2>
+      </div>
+
+      <div class="pub-group">
+        <h3>Journal Articles</h3>
+        <ul class="pub-list">
+          <li><span class="pub-year">2025</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, Andreadis, K. M., Langhorst, T. Assimilating SWOT Level-4 River discharge into a macroscale hydrologic model. <span class="jn">Under review: Remote Sensing of Environment.</span> <a class="doi-link" href="https://doi.org/10.2139/ssrn.5336997" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 11.4</span></li>
+          <li><span class="pub-year">2025</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, Markonis, Y., Marra, F., Nikolopoulos, E. I., Papalexiou, S. M., Levizzani, V. Diurnal Variability of Global Precipitation: Insights from Hourly Satellite and Reanalysis Datasets. <span class="jn">Hydrology and Earth System Sciences.</span> <a class="doi-link" href="https://doi.org/hess-29-4929-2025" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 5.8</span></li>
+          <li><span class="pub-year">2025</span><span class="pub-body">Singh, U., Nasreen, S., Tripathi, G., Mehrishi, P., <strong>Pradhan, R. K.</strong>, Bestakova, Z., ... & Hanel, M. Disaggregating IMERG satellite precipitation over Czech Republic: an innovative approach using hybrid Extreme Gradient Boosting based on Fuzzy Spatial-Temporal Multivariate Clustering. <span class="jn">Journal of Big Data.</span> <a class="doi-link" href="https://doi.org/10.1186/s40537-025-01208-4" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 6.4</span></li>
+          <li><span class="pub-year">2024</span><span class="pub-body">Markonis, Y., Vargas Godoy, M. R., <strong>Pradhan, R. K.</strong>, Pratap, S., Thomson, J. R., Hanel, M., ... & Papalexiou, S. M. Spatial partitioning of terrestrial precipitation reveals varying dataset agreement across different environments. <span class="jn">Communications Earth & Environment.</span> <a class="doi-link" href="https://doi.org/10.1038/s43247-024-01377-9" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 8.9</span></li>
+          <li><span class="pub-year">2024</span><span class="pub-body">Vargas Godoy, M. R., Markonis, Y., Rakovec, O., Jenicek, M., Dutta, R., <strong>Pradhan, R. K.</strong>, ... & Hanel, M. Water cycle changes in Czechia: a multi-source water budget perspective. <span class="jn">Hydrology and Earth System Sciences.</span> <a class="doi-link" href="https://doi.org/10.5194/hess-28-1-2024" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 5.8</span></li>
+          <li><span class="pub-year">2023</span><span class="pub-body">Rahim, A., Markonis, Y., Cuřín, V., <strong>Pradhan, R. K.</strong>, & Máca, P. Systematic analysis of flash drought research: contribution, collaboration, and challenges. <span class="jn">Theoretical and Applied Climatology.</span> <a class="doi-link" href="https://doi.org/10.1007/s00704-023-04584-0" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 3.5</span></li>
+          <li><span class="pub-year">2023</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, & Markonis, Y. Performance evaluation of GPM IMERG precipitation products over the tropical oceans using Buoys. <span class="jn">Journal of Hydrometeorology.</span> <a class="doi-link" href="https://doi.org/10.1175/JHM-D-22-0216.1" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 3.8</span></li>
+          <li><span class="pub-year">2022</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, Markonis, Y., Vargas Godoy, M. R., Villalba-Pradas, A., Andreadis, K. M., Nikolopoulos, E. I., ... & Hanel, M. Review of GPM IMERG performance: A global perspective. <span class="jn">Remote Sensing of Environment.</span> <a class="doi-link" href="https://doi.org/10.1016/j.rse.2021.112754" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 13.5</span></li>
+          <li><span class="pub-year">2021</span><span class="pub-body">Srivastava, P. K., <strong>Pradhan, R. K.</strong>, Petropoulos, G. P., Pandey, V., Gupta, M., Yaduvanshi, A., ... & Sahai, A. K. Long-Term Trend Analysis of Precipitation and Extreme Events over Kosi River Basin in India. <span class="jn">Water.</span> <a class="doi-link" href="https://doi.org/10.3390/w13121695" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 3.0</span></li>
+          <li><span class="pub-year">2020</span><span class="pub-body">Srivastava, P. K., Singh, P., Mall, R. K., <strong>Pradhan, R. K.</strong>, Bray, M., & Gupta, A. Performance assessment of evapotranspiration estimated from different data sources over agricultural landscape in Northern India. <span class="jn">Theoretical and Applied Climatology.</span> <a class="doi-link" href="https://doi.org/10.1007/s00704-019-03076-4" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 3.5</span></li>
+          <li><span class="pub-year">2019</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, Srivastava, P. K., Maurya, S., Singh, S. K., & Patel, D. K. Integrated framework for soil and water conservation in Kosi River Basin. <span class="jn">Geocarto International.</span> <a class="doi-link" href="https://doi.org/10.1080/10106049.2018.1520921" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 3.5</span></li>
+          <li><span class="pub-year">2018</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, Sharma, D., Panda, S. K., Dubey, S. K., & Sharma, A. Changes of precipitation regime and its indices over Rajasthan state of India: impact of climate change scenarios experiments. <span class="jn">Climate Dynamics.</span> <a class="doi-link" href="https://doi.org/10.1007/s00382-018-4334-9" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 4.06</span></li>
+          <li><span class="pub-year">2018</span><span class="pub-body">Sharma, A., Sharma, D., Panda, S. K., Dubey, S. K., & <strong>Pradhan, R. K.</strong> Investigation of temperature and its indices under climate change scenarios over different regions of Rajasthan state in India. <span class="jn">Global and Planetary Change.</span> <a class="doi-link" href="https://doi.org/10.1016/j.gloplacha.2017.12.008" target="_blank" rel="noopener">DOI</a></span><span class="if-badge">IF 4.4</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-group">
+        <h3>Book Chapter</h3>
+        <ul class="pub-list">
+          <li><span class="pub-year">2019</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, Maurya, S., & Srivastava, P. K. Morphometric Analysis and Prioritization of Sub-Watersheds in the Kosi River Basin for Soil and Water Conservation. In <span class="jn">Wastewater Reuse and Watershed Management: Engineering Implications for Agriculture, Industry, and the Environment</span> (pp. 353–368). CRC Press.</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-group">
+        <h3>Conference Presentations</h3>
+        <ul class="pub-list">
+          <li><span class="pub-year">2024</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, & Markonis, Y. Diurnal Variability of Global Precipitation: Insights from Hourly Satellite and Reanalysis Datasets. <span class="jn">European Geosciences Union General Assembly</span>, Vienna, Austria [Oral].</span></li>
+          <li><span class="pub-year">2023</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, & Markonis, Y. Multi-source assessment of uncertainty over the tropical ocean. <span class="jn">European Geosciences Union General Assembly</span>, Vienna, Austria [Poster].</span></li>
+          <li><span class="pub-year">2023</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, & Markonis, Y. Diurnal Variability of Global Precipitation: Insights from Hourly Satellite and Reanalysis Datasets. <span class="jn">American Geophysical Union Fall Meeting</span>, San Francisco, California [Poster].</span></li>
+          <li><span class="pub-year">2022</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, & Markonis, Y. Performance evaluation of GPM IMERG precipitation over the tropical oceans using Buoys. <span class="jn">American Geophysical Union Fall Meeting</span>, Chicago, Illinois [Poster].</span></li>
+          <li><span class="pub-year">2022</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, & Markonis, Y. Performance evaluation of GPM IMERG precipitation over the tropical oceans. <span class="jn">International Association of Hydrological Sciences</span>, Montpellier, France [Poster].</span></li>
+          <li><span class="pub-year">2020</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, & Markonis, Y. Performance of GPM IMERG Precipitation: A Literature Investigation. <span class="jn">Earth Observation for Water Cycle Science</span>, held online [Oral].</span></li>
+          <li><span class="pub-year">2020</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, Pradas, A. V., Rahim, A., Vargas, M., & Markonis, Y. A review and synthesis of GPM products efficiency: Preliminary results. <span class="jn">URSI GASS</span>, Rome, Italy (Summary paper) [Oral].</span></li>
+          <li><span class="pub-year">2019</span><span class="pub-body"><strong>Pradhan, R. K.</strong>, Sharma, D. Projection of Changes in Future Precipitation over Rajasthan Using LARS-WG. <span class="jn">Kostelecké Inspirování Conference</span>, Prague, Czech Republic [Oral].</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="block" id="contact" style="border-bottom:none;">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="eyebrow">Get in touch</p>
+        <h2>Contact</h2>
+        <p class="lead" style="margin-top:16px;">Open to questions about my research, collaboration ideas, or just saying hello — I try to reply promptly.</p>
+
+        <ul class="contact-list">
+          <li><span class="k">Affiliation</span>Department of Geosciences, University of Padova, Italy</li>
+          <li><span class="k">Email</span><a href="mailto:rajanikumar.pradhan@unipd.it">rajanikumar.pradhan@unipd.it</a></li>
+          <li><span class="k">Alternate email</span><a href="mailto:rkpradhan462@gmail.com">rkpradhan462@gmail.com</a></li>
+          <li><span class="k">Phone</span>+39 123 456 7890</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="eyebrow">Elsewhere</p>
+        <div class="socials-full">
+          <a href="https://x.com/Rajanikumar462" target="_blank" rel="noopener">X / Twitter</a>
+          <a href="https://www.linkedin.com/in/rajani-kumar-pradhan-463821108/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.researchgate.net/profile/Rajani-Pradhan" target="_blank" rel="noopener">ResearchGate</a>
+          <a href="https://scholar.google.com/citations?user=NPssbW4AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://rajani462.github.io/cv.html" target="_blank" rel="noopener">Full CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 Dr. Rajani Kumar Pradhan · Department of Geosciences, University of Padova
+</footer>
+
+</body>
+</html>
