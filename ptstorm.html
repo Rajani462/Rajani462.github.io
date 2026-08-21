@@ -1,55 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PTSTORM Project - Rajani Kumar Pradhan</title>
-<link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTSTORM — Rajani Kumar Pradhan</title>
+<meta name="description" content="PTSTORM: Extreme Precipitation Response to Temperature Variations — the role of storm types and global circulation patterns. MSCA Postdoctoral Fellowship, University of Padova.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:        #0B1F2A;
+    --panel:      #12303F;
+    --panel-2:    #0E2733;
+    --paper:      #EAF3F1;
+    --muted:      #8FAAB5;
+    --rain:       #5FB3D9;
+    --rain-dim:   #2E6F82;
+    --amber:      #E8A33D;
+    --line:       rgba(234,243,241,0.12);
+    --line-soft:  rgba(234,243,241,0.06);
+    --radius:     14px;
+    --maxw:       860px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Spectral', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--paper);
+  }
+
+  a{color:var(--rain); text-decoration:none;}
+  a:hover{color:var(--amber);}
+  a:focus-visible{outline:2px solid var(--amber); outline-offset:3px; border-radius:4px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  .eyebrow{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rain);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--rain);
+    display:inline-block;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,31,42,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:20px;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:0.02em;
+    color:var(--paper);
+    white-space:nowrap;
+  }
+  .brand span{color:var(--rain);}
+  nav.links{display:flex; gap:26px; flex-wrap:wrap;}
+  nav.links a{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:13.5px;
+    letter-spacing:0.03em;
+    color:var(--muted);
+  }
+  nav.links a:hover{color:var(--paper);}
+  .socials{display:flex; gap:8px;}
+  .badge-icon{
+    width:30px; height:30px; border-radius:50%;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:10.5px; font-weight:600;
+    color:var(--muted);
+    transition:border-color .18s, color .18s;
+  }
+  .badge-icon:hover{border-color:var(--rain); color:var(--rain);}
+
+  @media (max-width: 700px){
+    nav.links{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .back-link{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:13px; font-weight:600;
+    display:inline-flex; align-items:center; gap:6px;
+    margin:40px 0 26px;
+  }
+
+  .project-hero{padding:0 0 40px; border-bottom:1px solid var(--line);}
+  .project-hero .tag{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase;
+    color:var(--amber);
+    border:1px solid var(--rain-dim);
+    border-radius:100px;
+    padding:5px 12px;
+    display:inline-block;
+    margin-bottom:18px;
+  }
+  .project-hero h1{
+    font-size:clamp(28px, 4vw, 40px);
+    line-height:1.2;
+    margin-bottom:14px;
+  }
+  .project-hero .meta{
+    color:var(--muted);
+    font-size:15px;
+    font-style:italic;
+  }
+
+  /* ---------- CONTENT ---------- */
+  section.block{padding:44px 0; border-bottom:1px solid var(--line);}
+  section.block:last-of-type{border-bottom:none;}
+  .block h2{
+    font-size:22px;
+    margin-bottom:18px;
+  }
+  .block p{margin:0 0 16px; color:var(--paper);}
+  .block p:last-child{margin-bottom:0;}
+
+  ul.obj-list{list-style:none; margin:18px 0 0; padding:0; display:grid; gap:12px;}
+  ul.obj-list li{
+    display:flex; align-items:flex-start; gap:12px;
+    color:var(--paper); font-size:15px;
+  }
+  ul.obj-list li::before{
+    content:"";
+    width:7px; height:7px; margin-top:8px; flex-shrink:0;
+    background:var(--rain); border-radius:50%;
+  }
+
+  .funding-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .funding-card .prog{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:14.5px;
+    color:var(--paper);
+  }
+  .funding-card .amt{
+    font-family:'Spectral', serif;
+    font-size:26px;
+    color:var(--amber);
+  }
+
+  footer{
+    padding:40px 0 46px;
+    text-align:center;
+    color:var(--muted); font-size:13px;
+    font-family:'Space Grotesk', sans-serif;
+  }
+</style>
 </head>
 <body>
-  <header class="header">
-    <div class="navbar">
-      <div class="logo">
-        <div class="site-title">Dr. Rajani Kumar Pradhan</div>
-      </div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a href="projects.html">Projects</a>
-        <a href="publications.html">Publications</a>
-        <a href="cv.html">CV</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="icons">
-        <a class="icon" href="https://www.researchgate.net/profile/Rajani-Pradhan" target="_blank" title="ResearchGate">RG</a>
-        <a class="icon" href="https://scholar.google.com/citations" target="_blank" title="Google Scholar">GS</a>
-      </div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">R.K. <span>Pradhan</span></div>
+    <nav class="links">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#research">Research</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="socials">
+      <a class="badge-icon" href="https://www.researchgate.net/profile/Rajani-Pradhan" title="ResearchGate" target="_blank" rel="noopener">RG</a>
+      <a class="badge-icon" href="https://scholar.google.com/citations?user=NPssbW4AAAAJ" title="Google Scholar" target="_blank" rel="noopener">GS</a>
     </div>
-  </header>
-
-  
-<div class='container'>
-  <div class='section'>
-    <h2>PTSTORM Project</h2>
-    <h3>PTSTORM - Extreme Precipitation Response to Temperature Variations: The Role of Storm Types and Global Circulation Patterns </h3>
-    <p><em>MSCA Fellowship, University of Padova, 2025–2027</em></p>
-    <p>The overarching objective of ‘Extreme Precipitation Response to Temperature Variations: The Role of Storm Types and Global Circulation Patterns (PTSTORM)’ is to improve our under-standing of the relation between extreme precipitation and atmospheric temperature. Current approaches use scaling relations that mimic the exponential increase of water vapor availability with temperature predicted by the Clausius–Clapeyron equation. These approaches fail to consider that extreme events are generated by diverse physical processes, which may be influenced by large-scale drivers. PTSTORM will provide a more realistic representation of the relationship between extreme precipitation and temperature by explicitly considering the dependence on the generating precipitation process and on large-scale atmospheric circulation (LAC) patterns. 
-      Key objectives:</p>
-    <ul>
-      <li>Classify storm types and associated precipitation characteristics globally.</li>
-      <li>Quantify temperature–precipitation scaling across storm types and regions.</li>
-      <li>Assess modulation of extremes by large-scale circulation regimes.</li>
-    </ul>
-    <h3>Methodology</h3>
-    <p>We combine satellite products (e.g., GPM IMERG), reanalysis datasets, and statistical models. Results will inform process-based interpretations and improve predictive models for extreme precipitation under changing climate conditions.</p>
-    <h3>Funding</h3>
-    <p>Marie Skłodowska-Curie Actions (MSCA) Postdoctoral Fellowship — €193,643.</p>
   </div>
-</div>
+</header>
 
+<main>
+  <div class="wrap">
+    <a class="back-link" href="index.html#projects">← Back to portfolio</a>
 
-  <footer>
-    © 2025 Dr. Rajani Kumar Pradhan | Department of Geosciences, University of Padova
-  </footer>
+    <div class="project-hero">
+      <span class="tag">MSCA Fellowship · University of Padova · 2025–2027</span>
+      <h1>PTSTORM<br>Extreme Precipitation Response to Temperature Variations</h1>
+      <p class="meta">The role of storm types and global circulation patterns</p>
+    </div>
+
+    <section class="block">
+      <p class="eyebrow">Overview</p>
+      <h2 style="margin-top:14px;">What the project is about</h2>
+      <p>The overarching objective of PTSTORM is to improve our understanding of the relationship between extreme precipitation and atmospheric temperature. Current approaches rely on scaling relations that mimic the exponential increase in water vapor availability with temperature, as predicted by the Clausius–Clapeyron equation — but these fail to account for the fact that extreme events are generated by diverse physical processes, which may themselves be shaped by large-scale drivers.</p>
+      <p>PTSTORM will provide a more realistic representation of the precipitation–temperature relationship by explicitly considering the dependence on the generating precipitation process and on large-scale atmospheric circulation (LAC) patterns.</p>
+
+      <ul class="obj-list">
+        <li>Classify storm types and associated precipitation characteristics globally.</li>
+        <li>Quantify temperature–precipitation scaling across storm types and regions.</li>
+        <li>Assess modulation of extremes by large-scale circulation regimes.</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">Approach</p>
+      <h2 style="margin-top:14px;">Methodology</h2>
+      <p>The project combines satellite precipitation products (e.g. GPM IMERG), reanalysis datasets, and statistical models. Results will inform process-based interpretations and improve predictive models for extreme precipitation under changing climate conditions.</p>
+    </section>
+
+    <section class="block">
+      <p class="eyebrow">Support</p>
+      <h2 style="margin-top:14px;">Funding</h2>
+      <div class="funding-card">
+        <span class="prog">Marie Skłodowska-Curie Actions (MSCA) Postdoctoral Fellowship</span>
+        <span class="amt">€193,643</span>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  © 2025 Dr. Rajani Kumar Pradhan · Department of Geosciences, University of Padova
+</footer>
+
 </body>
 </html>
